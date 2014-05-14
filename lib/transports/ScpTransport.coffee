@@ -81,6 +81,9 @@ class ScpTransport
           callback null, files
 
   _getConnection: (hostname, port, username, password, keyfile, callback) ->
+    if not port?
+      port = 22
+
     key = "#{username}@#{hostname}:#{port}"
 
     if @connections[key]
